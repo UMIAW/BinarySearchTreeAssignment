@@ -57,7 +57,7 @@ public class Mainmenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(330, 10, 190, 130);
+        jLabel4.setBounds(330, 10, 180, 130);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Forms/mainmenu.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
