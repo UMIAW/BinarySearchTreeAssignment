@@ -38,7 +38,7 @@ public class Mainmenu extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Public\\Pictures\\aldiko-book-reader-icon.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("F:\\NetBeansProjects\\DSABinarySearchTree\\imges\\insert.png")); // NOI18N
         jLabel2.setText("Insert");
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -46,10 +46,10 @@ public class Mainmenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 250, 150, 100);
+        jLabel2.setBounds(10, 250, 150, 100);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Public\\Pictures\\Book_Help_Manual_Search.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon("F:\\NetBeansProjects\\DSABinarySearchTree\\imges\\search.png")); // NOI18N
         jLabel4.setText("Search");
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -59,7 +59,7 @@ public class Mainmenu extends javax.swing.JFrame {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(330, 10, 190, 130);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Public\\Pictures\\SliderImg001.jpg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Forms/mainmenu.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 560, 350);
 

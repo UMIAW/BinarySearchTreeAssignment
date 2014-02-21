@@ -32,7 +32,7 @@
           <Font name="Tahoma" size="14" style="1"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Public\Pictures\aldiko-book-reader-icon.png"/>
+          <Image iconType="2" name="F:\NetBeansProjects\DSABinarySearchTree\imges\insert.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Insert"/>
       </Properties>
@@ -41,7 +41,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="0" y="250" width="150" height="100"/>
+          <AbsoluteConstraints x="10" y="250" width="150" height="100"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -51,7 +51,7 @@
           <Font name="Tahoma" size="14" style="1"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Public\Pictures\Book_Help_Manual_Search.png"/>
+          <Image iconType="2" name="F:\NetBeansProjects\DSABinarySearchTree\imges\search.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Search"/>
       </Properties>
@@ -67,7 +67,7 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Public\Pictures\SliderImg001.jpg"/>
+          <Image iconType="3" name="/Forms/mainmenu.jpg"/>
         </Property>
       </Properties>
       <Constraints>
