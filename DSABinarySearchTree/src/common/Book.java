@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package common;
 
 /**
@@ -11,11 +10,19 @@ package common;
  * @author IsuKay
  */
 public class Book {
+
+    private int isbn;
+    
+    private String category;
+
+    private String bookName;
+
+    private String autherFirstName;
+
+    private String autherLastName;
     
     Book RightChild;
     Book LeftChild;
-    
-    private int isbn;
 
     public int getIsbn() {
         return isbn;
@@ -56,21 +63,11 @@ public class Book {
     public void setAutherLastName(String autherLastName) {
         this.autherLastName = autherLastName;
     }
-    
-    private String category;
-    
-    private String bookName;
-    
-    private String autherFirstName;
-    
-    private String autherLastName;   
-    
-    public String toString()
-		{
-                   
-			return isbn+" "+category+ " by "+bookName+" "+autherFirstName+" " + autherLastName;
 
-		}
-      
-    
+    public String toString() {
+
+        return isbn + " " + category + " by " + bookName + " " + autherFirstName + " " + autherLastName;
+
+    }
+
 }
