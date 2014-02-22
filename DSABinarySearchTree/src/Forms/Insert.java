@@ -7,6 +7,7 @@
 package Forms;
 
 import common.Book;
+import common.BinarySearchTree;
 import java.util.ArrayList;
 
 /**
@@ -16,9 +17,11 @@ import java.util.ArrayList;
 public class Insert extends javax.swing.JFrame {
 
     /**
-     * Creates new form Insert
+//////     * Creates new form Insert
      */
     public Insert() {
+      
+        
         initComponents();
     }
 
@@ -34,17 +37,17 @@ public class Insert extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         isbn = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        categ = new javax.swing.JComboBox();
+        catgry = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
-        bname = new javax.swing.JTextField();
+        bName = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        fname = new javax.swing.JTextField();
+        AFname = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        lname = new javax.swing.JTextField();
+        ALname = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        insert = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,7 +56,7 @@ public class Insert extends javax.swing.JFrame {
 
         jLabel2.setText("Book Category");
 
-        categ.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Java", "PHP" }));
+        catgry.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Java", "PHP" }));
 
         jLabel3.setText("Book Name");
 
@@ -70,10 +73,10 @@ public class Insert extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Insert");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        insert.setText("Insert");
+        insert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                insertActionPerformed(evt);
             }
         });
 
@@ -83,7 +86,7 @@ public class Insert extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(jButton3)
+                .addComponent(insert)
                 .addGap(37, 37, 37)
                 .addComponent(jButton2)
                 .addGap(27, 27, 27)
@@ -97,7 +100,7 @@ public class Insert extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(insert))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
@@ -124,10 +127,10 @@ public class Insert extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(isbn, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(categ, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bname, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fname, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lname, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(catgry, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bName, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(AFname, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ALname, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -140,19 +143,19 @@ public class Insert extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(categ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(catgry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(bname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(fname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AFname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ALname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -163,14 +166,36 @@ public class Insert extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void insertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertActionPerformed
 
-         Book b = new Book();      
+        int ISBN;
+        String Catg;
+        String BkName;
+        String AFirstname;
+        String ALastname;
+        
+        ISBN=Integer.parseInt(isbn.getText());        
+        Catg=catgry.getSelectedItem().toString();
+        BkName=bName.getText();
+        AFirstname=AFname.getText();
+        ALastname=ALname.getText();
             
-              ArrayList dataList = new ArrayList();
-              
-                dataList.add(b);
-    }//GEN-LAST:event_jButton3ActionPerformed
+                
+         Book bk = new Book(); 
+         bk.setIsbn(ISBN);  
+         bk.setCategory(Catg);
+         bk.setBookName(BkName);
+         bk.setAutherFirstName(AFirstname);
+         bk.setAutherLastName(ALastname);
+        
+         BinarySearchTree bst = new BinarySearchTree();
+         bst.InsertNode(bk);
+      
+         bst.PreorderTraversTree(bst.root);
+         
+         
+            
+    }//GEN-LAST:event_insertActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -179,10 +204,10 @@ public class Insert extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
     public void clear()
     {
-        categ.setSelectedIndex(0);
-        bname.setText("");
-        fname.setText("");
-        bname.setText("");
+        catgry.setSelectedIndex(0);
+        bName.setText("");
+        AFname.setText("");
+        bName.setText("");
         isbn.setText("");
     }
     /**
@@ -223,20 +248,21 @@ public class Insert extends javax.swing.JFrame {
     
     public void clearRecord()
     {
-        categ.setSelectedIndex(0);
-        bname.setText("");
-        fname.setText("");
-        lname.setText("");
+        catgry.setSelectedIndex(0);
+        bName.setText("");
+        AFname.setText("");
+        ALname.setText("");
         isbn.setText("");
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField bname;
-    private javax.swing.JComboBox categ;
-    private javax.swing.JTextField fname;
+    private javax.swing.JTextField AFname;
+    private javax.swing.JTextField ALname;
+    private javax.swing.JTextField bName;
+    private javax.swing.JComboBox catgry;
+    private javax.swing.JButton insert;
     private javax.swing.JTextField isbn;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -244,6 +270,5 @@ public class Insert extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField lname;
     // End of variables declaration//GEN-END:variables
 }

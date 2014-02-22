@@ -12,13 +12,16 @@ package common;
  */
 public class Book {
     
-    private String isbn;
+    Book RightChild;
+    Book LeftChild;
+    
+    private int isbn;
 
-    public String getIsbn() {
+    public int getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(String isbn) {
+    public void setIsbn(int isbn) {
         this.isbn = isbn;
     }
 
@@ -60,7 +63,14 @@ public class Book {
     
     private String autherFirstName;
     
-    private String autherLastName;    
+    private String autherLastName;   
+    
+    public String toString()
+		{
+                   
+			return isbn+" "+category+ " by "+bookName+" "+autherFirstName+" " + autherLastName;
+
+		}
       
     
 }
