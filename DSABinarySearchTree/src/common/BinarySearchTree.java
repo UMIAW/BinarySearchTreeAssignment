@@ -20,17 +20,14 @@ import java.sql.SQLException;
 public class BinarySearchTree {
     
   public Book root;
-  Connection conn ;
-  ResultSet rs= null;
-  
-  //ArrayList<Book> dataList = new ArrayList<Book>();
 
-    public void InsertNode(Book b) 
+
+    public void InsertNode(int Isbn ,String Title, String Fname, String Lname) 
     {
-        int Isbn = b.getIsbn();
+       Book newNode = new Book(Isbn,Title,Fname,Lname);
         if (root == null) 
         {            
-            root = b;
+            root=newNode;
         } 
         else 
         {
@@ -40,12 +37,12 @@ public class BinarySearchTree {
             while (true) 
             {
                 Parent = focusNode;
-                if (Isbn < focusNode.getIsbn()) 
+                if (Isbn < focusNode.isbn) 
                 {
                     focusNode = focusNode.LeftChild;
                     if (focusNode == null) 
                     {
-                        Parent.LeftChild = b;
+                        Parent.LeftChild = newNode;
                         return;
                     }
                 } else 
@@ -53,14 +50,36 @@ public class BinarySearchTree {
                     focusNode = focusNode.RightChild;
                     if (focusNode == null) 
                     {
-                        Parent.RightChild = b;
+                        Parent.RightChild = newNode;
                         return;
                     }
                 }
             }
         }
     }
+public Book FindNode(int isbn)
+   {
+       Book focusNode = root;
+       
+       while(focusNode.isbn != isbn)
+       {
+           if(isbn < focusNode.isbn)
+           {
+               focusNode = focusNode.LeftChild;
 
+           }
+           else
+           {
+               focusNode = focusNode.RightChild;
+           }
+           if(focusNode==null)
+           {
+               return null;
+           }
+          
+       }
+       return focusNode;
+   }
     public void PreorderTraversTree(Book focusNode) {
 
         if (focusNode != null) 
@@ -74,39 +93,7 @@ public class BinarySearchTree {
       //Insert data to data base 
     public void GetDataFromdatabase()
     {
-        BinarySearchTree theTree = new BinarySearchTree();
         
-        int isbn;
-        String bookname;
-        String AuthorFname;
-        String AuthorLname;
-        
-        try
-        {
-            /*Class.forName("com.mysql.jdbc.Driver");
-            String url="jdbc:mysql://localhost:3306/umiaw_bookstore";
-            String Uname = "root";
-            String pwd = "";
-            //Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/umiaw_bookstore");
-            Connection conn = DriverManager.getConnection(url,Uname,pwd);*/
-  
-            Statement st=conn.createStatement();
-            String query="SELECT * FROM bookdetails";
-            rs=st.executeQuery(query);
-        
-            while(rs.next())
-            {
-                isbn=Integer.parseInt(rs.getString("ISBN"));
-                bookname=rs.getString("BookName");            
-                AuthorFname=rs.getString("AuthourFirstname");
-                AuthorLname=rs.getString("AuthourLastname");
-            }
-            theTree.PreorderTraversTree(theTree.root); 
-        }
-        catch(Exception e)
-        {
-             JOptionPane.showMessageDialog(null, e);
-        }
     }
 
 }

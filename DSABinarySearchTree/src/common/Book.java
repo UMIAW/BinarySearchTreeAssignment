@@ -11,63 +11,30 @@ package common;
  */
 public class Book {
 
-    private int isbn;
-    
-    private String category;
-
-    private String bookName;
-
-    private String autherFirstName;
-
-    private String autherLastName;
+     int isbn;  
+     String bookName;
+     String autherFirstName;
+     String autherLastName;
     
     Book RightChild;
     Book LeftChild;
 
-    public int getIsbn() {
-        return isbn;
-    }
 
-    public void setIsbn(int isbn) {
-        this.isbn = isbn;
-    }
 
-    public String getCategory() {
-        return category;
-    }
+		// Create Constructor For assign values
+		Book(int isbn , String bookName, String autherFirstName, String autherLastName)
+		{
+			this.isbn=isbn;                   
+			this.bookName = bookName;
+                        this.autherFirstName=autherFirstName;
+			this.autherLastName = autherLastName;
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
+		}
 
-    public String getBookName() {
-        return bookName;
-    }
+		public String toString()
+		{
+                   
+			return bookName+" authored by "+autherFirstName+" "+autherLastName+" " + isbn;
 
-    public void setBookName(String bookName) {
-        this.bookName = bookName;
-    }
-
-    public String getAutherFirstName() {
-        return autherFirstName;
-    }
-
-    public void setAutherFirstName(String autherFirstName) {
-        this.autherFirstName = autherFirstName;
-    }
-
-    public String getAutherLastName() {
-        return autherLastName;
-    }
-
-    public void setAutherLastName(String autherLastName) {
-        this.autherLastName = autherLastName;
-    }
-
-    public String toString() {
-
-        return isbn + " " + category + " by " + bookName + " " + autherFirstName + " " + autherLastName;
-
-    }
-
+		}
 }
