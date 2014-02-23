@@ -9,19 +9,19 @@ package common;
  *
  * @author IsuKay
  */
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 public class BinarySearchTree {
 
-    ArrayList<Book> dataList = new ArrayList<Book>();
+    //ArrayList<Book> dataList = new ArrayList<Book>();
 
     public Book root;
 
     public void InsertNode(Book b) {
         int Isbn = b.getIsbn();
 
-        if (dataList.isEmpty()) {
-            dataList.add(b);
+        if (root==null) {
+            
             root = b;
 
         } else {

@@ -6,48 +6,33 @@
 
 package common;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import javax.swing.JOptionPane;
+import java.sql.*;
+import javax.swing.*;
 
 /**
  *
  * @author Wathsala
  */
 public class DBConnection {
-     public Connection connection = null;
     
-    public Connection getConnection()
+     
+    
+    Connection conn = null;
+    
+    public static Connection ConnecrDb()
     {
-        try
-        {
+        try {
             Class.forName("com.mysql.jdbc.Driver");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","root");
+            JOptionPane.showMessageDialog(null, "Connection Established");
+            return conn;
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e);
+            return null;
+        }
             
-        }
-        catch(ClassNotFoundException e)
-                {
-                   
-                }
-        try
-        {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","root");
-            
-        }
-        catch(SQLException e)
-        {
-            System.out.println("Connection Faild");
-            e.printStackTrace();
-        }
-        if(connection !=null)
-        {
-            System.out.println("You made it");
-        }
-        else
-        {
-            System.out.println("You faild to make connection");
-        }
-        return connection;
     }
     
     
