@@ -11,6 +11,7 @@ package common;
  * @author IsuKay
  */
 import java.util.ArrayList;
+
 public class BinarySearchTree {
 
     ArrayList<Book> dataList = new ArrayList<Book>();
@@ -21,12 +22,12 @@ public class BinarySearchTree {
    public void InsertNode(Book b)
 	{                      
           
-                b = new Book();
+              
                 int Isbn = b.getIsbn();
                 
-		if(dataList.isEmpty())
+		if(root == null)
 		{                    
-                    dataList.add(b);
+                    //dataList.add(b);
                     root = b;
                     
 		}
@@ -59,6 +60,34 @@ public class BinarySearchTree {
 			}
                 }
         }
+   
+   //Test findNode
+   
+   public Book findNode(int isbn)
+   {
+      
+       //Book focusNode = root;
+        Book focusNode = root;
+       while(focusNode.getIsbn() != isbn)
+       {
+           if(isbn < focusNode.getIsbn())
+           {
+               focusNode = focusNode.LeftChild;
+
+           }
+           else
+           {
+               focusNode = focusNode.RightChild;
+           }
+           if(focusNode==null)
+           {
+               return null;
+           }
+          
+       }
+       return focusNode;
+   }
+   
  public void PreorderTraversTree(Book focusNode)
 	{
 
