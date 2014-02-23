@@ -18,12 +18,11 @@ import javax.swing.JOptionPane;
  * @author IsuKay
  */
 
-
-
 public class Insert extends javax.swing.JFrame {
     
 Connection connection = null;
-     PreparedStatement pst = null;
+PreparedStatement pst = null;
+Book root;
 //////     * Creates new form Insert
     
     public Insert() {
@@ -57,9 +56,10 @@ Connection connection = null;
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         ALname = new javax.swing.JTextField();
-        insert = new javax.swing.JButton();
+        view = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        insert3 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         txt_findisbn1 = new javax.swing.JTextField();
@@ -120,31 +120,42 @@ Connection connection = null;
 
         jLabel4.setText("Author");
 
-        insert.setText("Insert");
-        insert.addActionListener(new java.awt.event.ActionListener() {
+        view.setText("View");
+        view.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                insertActionPerformed(evt);
+                viewActionPerformed(evt);
             }
         });
 
         jButton2.setText("Clear");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Cancel");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        insert3.setText("Insert");
+        insert3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insert3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout P_insertLayout = new javax.swing.GroupLayout(P_insert);
         P_insert.setLayout(P_insertLayout);
         P_insertLayout.setHorizontalGroup(
             P_insertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(P_insertLayout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addGroup(P_insertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(P_insertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(P_insertLayout.createSequentialGroup()
-                        .addComponent(insert)
-                        .addGap(44, 44, 44)
-                        .addComponent(jButton2)
-                        .addGap(41, 41, 41)
-                        .addComponent(jButton1))
-                    .addGroup(P_insertLayout.createSequentialGroup()
+                        .addGap(81, 81, 81)
                         .addGroup(P_insertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -152,13 +163,23 @@ Connection connection = null;
                         .addGap(8, 8, 8)
                         .addGroup(P_insertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(P_insertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(isbn, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bName, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(AFname, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ALname, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(P_insertLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(view)
+                        .addGap(39, 39, 39)
+                        .addComponent(insert3)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(P_insertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(P_insertLayout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1))
+                    .addGroup(P_insertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(isbn, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bName, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(AFname, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ALname, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         P_insertLayout.setVerticalGroup(
@@ -185,7 +206,8 @@ Connection connection = null;
                 .addGroup(P_insertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
-                    .addComponent(insert))
+                    .addComponent(view)
+                    .addComponent(insert3))
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
@@ -444,10 +466,20 @@ Connection connection = null;
         txt_findisbn1.setText("");
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void insertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertActionPerformed
+    private void viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewActionPerformed
         // TODO add your handling code here:
+        BinarySearchTree bst = new BinarySearchTree();
+        bst.GetDataFromdatabase();
         
-         try {
+    }//GEN-LAST:event_viewActionPerformed
+    
+    
+    
+    private void insert3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insert3ActionPerformed
+        // TODO add your handling code here:
+      
+         try 
+         {
             String sql = "insert into bookdetails(ISBN,BookName,AuthorFName,AuthorLName) values(?,?,?,?)";
             pst = connection.prepareStatement(sql);
             pst.setString(1,isbn.getText());
@@ -455,16 +487,22 @@ Connection connection = null;
             pst.setString(3,AFname.getText());
             pst.setString(4,ALname.getText());
             
-            pst.execute();
-            
-            JOptionPane.showMessageDialog(null,"Saved");
+            pst.execute();           
+            JOptionPane.showMessageDialog(null,"Saved");      
         }
-         catch(Exception e){
+        catch(Exception e)
+        {
              JOptionPane.showMessageDialog(null,e);
         }
-        
-        
-    }//GEN-LAST:event_insertActionPerformed
+    }//GEN-LAST:event_insert3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
     public void clear()
     {
         //FIXME correct this
@@ -506,9 +544,7 @@ Connection connection = null;
             public void run() {
                 new Insert().setVisible(true);
             }
-        });
-                
-    
+        });  
     }
      
     public void clearRecord()
@@ -527,9 +563,9 @@ Connection connection = null;
     private javax.swing.JPanel P_search;
     private javax.swing.JTextField bName;
     private javax.persistence.EntityManager entityManager;
-    private javax.swing.JButton insert;
     private javax.swing.JButton insert1;
     private javax.swing.JButton insert2;
+    private javax.swing.JButton insert3;
     private javax.swing.JTextField isbn;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -558,6 +594,7 @@ Connection connection = null;
     private javax.swing.JTable jTable5;
     private javax.swing.JTextField txt_findisbn;
     private javax.swing.JTextField txt_findisbn1;
+    private javax.swing.JButton view;
     // End of variables declaration//GEN-END:variables
 }
 
