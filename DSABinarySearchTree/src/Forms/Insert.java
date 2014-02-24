@@ -637,6 +637,8 @@ public class Insert extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ch_isbnActionPerformed
 
+
+ 
     private void b_printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_printActionPerformed
         // TODO add your handling code here:
        if(txt_findisbn.getText().equals(""))
@@ -645,10 +647,29 @@ public class Insert extends javax.swing.JFrame {
         }
        else
        {
-            find_data();
+            findData();
        }
         
     }//GEN-LAST:event_b_printActionPerformed
+
+public void findData()
+    {
+         try
+                {        
+                    
+                    Statement st=connection.createStatement();
+                    String search = txt_findisbn.getText();
+                    String query="SELECT ISBN,BookName,AuthorFName,AuthorLName FROM bookdetails WHERE BookName LIKE CONCAT('%','"+search+"','%')";
+                    rs=st.executeQuery(query);
+                    jTable5.setModel(DbUtils.resultSetToTableModel(rs));
+                            
+                
+                }
+                catch(Exception e)
+                {
+                    JOptionPane.showMessageDialog(null, e);
+                }  
+    }
 
     private void chkISBNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkISBNActionPerformed
         // TODO add your handling code here:
