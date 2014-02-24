@@ -17,7 +17,7 @@ import net.proteanit.sql.DbUtils;
 
 /**
  *
- * @author IsuKay
+ * @authored by Demons
  */
 
 public class Insert extends javax.swing.JFrame {
@@ -556,8 +556,6 @@ public class Insert extends javax.swing.JFrame {
       
             
     }//GEN-LAST:event_searchActionPerformed
-
-   
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -638,7 +636,6 @@ public class Insert extends javax.swing.JFrame {
     }//GEN-LAST:event_ch_isbnActionPerformed
 
 
- 
     private void b_printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_printActionPerformed
         // TODO add your handling code here:
        if(txt_findisbn.getText().equals(""))
@@ -647,7 +644,7 @@ public class Insert extends javax.swing.JFrame {
         }
        else
        {
-            
+              FindData();
        }
         
     }//GEN-LAST:event_b_printActionPerformed
@@ -655,14 +652,12 @@ public class Insert extends javax.swing.JFrame {
     public void FindData()
     {
                 try
-                {        
-                    
+                {                           
                     Statement st=connection.createStatement();
                     String search = txt_findisbn.getText();
                     String query="SELECT ISBN,BookName,AuthorFName,AuthorLName FROM bookdetails WHERE BookName LIKE CONCAT('%','"+search+"','%')";
                     rs=st.executeQuery(query);
-                    jTable5.setModel(DbUtils.resultSetToTableModel(rs));                           
-                
+                    jTable5.setModel(DbUtils.resultSetToTableModel(rs));               
                 }
                 catch(Exception e)
                 {
@@ -708,10 +703,8 @@ public class Insert extends javax.swing.JFrame {
         
     }
     private void insert3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insert3ActionPerformed
-
         // TODO add your handling code here: 
-
-          // Check ISBN Key
+        // TODO add your handling code here:
         if(isbn.getText().equals(""))
         {
             JOptionPane.showMessageDialog(null,"Please enter ISBN key","Warning",JOptionPane.WARNING_MESSAGE);
@@ -720,7 +713,6 @@ public class Insert extends javax.swing.JFrame {
         {
             try 
             {
-//Insert data to the DB
                 String sql = "insert into bookdetails(ISBN,BookName,AuthorFName,AuthorLName) values(?,?,?,?)";
                 pst = connection.prepareStatement(sql);
                 pst.setString(1,isbn.getText());
@@ -744,11 +736,38 @@ public class Insert extends javax.swing.JFrame {
 
     private void bt_refActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_refActionPerformed
         // TODO add your handling code here:
-        update_table();
-      
-        
+        update_table();   
     }//GEN-LAST:event_bt_refActionPerformed
-    public void clear()
+   public void show_data() 
+    {
+        int isbn;
+        String bookname;
+        String AuthorFname;
+        String AuthorLname;
+        
+        try
+        {        
+            Statement st=connection.createStatement();
+            String query="SELECT * FROM bookdetails";
+            rs=st.executeQuery(query);
+        
+            while(rs.next())
+            {
+                isbn=Integer.parseInt(rs.getString("ISBN"));
+                bookname=rs.getString("BookName");            
+                AuthorFname=rs.getString("AuthorFName");
+                AuthorLname=rs.getString("AuthorLName");
+                
+                theTree.InsertNode(isbn,bookname,AuthorFname,AuthorLname);
+            }           
+           // theTree.PreorderTraversTree(theTree.root); 
+        }
+        catch(Exception e)
+        {
+             JOptionPane.showMessageDialog(null, e);
+        }       
+    }
+public void clear()
     {
         ALname.setText("");
         AFname.setText("");
