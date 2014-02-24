@@ -586,7 +586,7 @@ public class Insert extends javax.swing.JFrame {
         }
        else
        {
-            find_data();
+            FindData();
        }
         
     }//GEN-LAST:event_b_printActionPerformed
@@ -605,18 +605,14 @@ public class Insert extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewActionPerformed
-        // TODO add your handling code here:
-      
+        // TODO add your handling code here:      
         show_data();
         update_table();
         
        
     }//GEN-LAST:event_viewActionPerformed
-   
-    }
-    
-    
-    
+
+
     public void update_table()
     {
         try
@@ -634,32 +630,7 @@ public class Insert extends javax.swing.JFrame {
         
     }
     private void insert3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insert3ActionPerformed
-        // TODO add your handling code here:
-        if(isbn.getText().equals(""))
-        {
-            JOptionPane.showMessageDialog(null,"Please enter ISBN key","Warning",JOptionPane.WARNING_MESSAGE);
-        }
-        else
-        {
-            try 
-            {
-                String sql = "insert into bookdetails(ISBN,BookName,AuthorFName,AuthorLName) values(?,?,?,?)";
-                pst = connection.prepareStatement(sql);
-                pst.setString(1,isbn.getText());
-                pst.setString(2,bName.getText());
-                pst.setString(3,AFname.getText());
-                pst.setString(4,ALname.getText());
-            
-                pst.execute();           
-                JOptionPane.showMessageDialog(null,"Saved");      
-            }
-            catch(Exception e)
-            {
-                JOptionPane.showMessageDialog(null,e);
-            }
-        }
-      
-        
+        // TODO add your handling code here: 
     }//GEN-LAST:event_insert3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -674,8 +645,6 @@ public class Insert extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_refActionPerformed
     public void clear()
     {
-        //FIXME correct this
-        //catgry.setSelectedIndex(0);
         ALname.setText("");
         AFname.setText("");
         bName.setText("");
@@ -716,15 +685,6 @@ public class Insert extends javax.swing.JFrame {
         });  
     }
      
-    public void clearRecord()
-    {
-        //FIXME correct this
-        //catgry.setSelectedIndex(0);
-        bName.setText("");
-        AFname.setText("");
-        ALname.setText("");
-        isbn.setText("");
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AFname;
     private javax.swing.JTextField ALname;

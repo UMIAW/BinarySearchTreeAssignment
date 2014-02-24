@@ -7,7 +7,7 @@ package common;
 
 /**
  *
- * @author IsuKay
+ * @authored by Demons
  */
 
 import Forms.Insert;
