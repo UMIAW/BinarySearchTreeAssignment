@@ -566,7 +566,66 @@ public class Insert extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void bt_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_deleteActionPerformed
-        // TODO add your handling code here:
+         try
+        {
+            
+            String QrySearchValue=null;
+            String ColumnName=null;
+            int row=0;
+            if(chkISBN.isSelected())
+            {
+                ColumnName="ISBN";
+                QrySearchValue=txt_Delete.getText();
+            }
+            if(ch_EntireRow.isSelected())
+            {
+                 row=jTableDeleteDetails.getSelectedRow();
+                 if(row != -1)
+                 {
+                ColumnName="ISBN";
+                
+                 QrySearchValue =(jTableDeleteDetails.getModel().getValueAt(row, 1).toString());
+                
+                  }
+                 else
+                     {
+                        JOptionPane.showMessageDialog(null, "Please select a record which you want to delete");
+                        return;
+                     }
+            }
+            if(ch_BookName.isSelected())
+            {
+                ColumnName="Bookname";
+                QrySearchValue=txt_Delete.getText();
+            }
+
+           
+            int input = JOptionPane.showOptionDialog(null, "Are you sure you want delete this", "The title", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+
+            if(input == JOptionPane.OK_OPTION)
+            {
+   
+                theTree.Delete(Integer.parseInt(QrySearchValue));
+                System.out.println("Search for 45");
+                System.out.println(theTree.FindNode(45));
+           
+            
+                String query="DELETE FROM bookdetails WHERE "+ColumnName+"='"+QrySearchValue+"'";
+                pst=connection.prepareStatement(query);
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Record has been deleted successfully");
+                txt_Delete.setText("");
+                show_data();        
+            }
+          
+        }
+         catch(Exception e)
+        {
+             JOptionPane.showMessageDialog(null, e);
+        }
+        
+                                            
+    }
                 
     }//GEN-LAST:event_bt_deleteActionPerformed
 
@@ -578,6 +637,8 @@ public class Insert extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ch_isbnActionPerformed
 
+
+ 
     private void b_printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_printActionPerformed
         // TODO add your handling code here:
        if(txt_findisbn.getText().equals(""))
@@ -586,10 +647,28 @@ public class Insert extends javax.swing.JFrame {
         }
        else
        {
-            FindData();
+            
        }
         
     }//GEN-LAST:event_b_printActionPerformed
+
+    public void FindData()
+    {
+                try
+                {        
+                    
+                    Statement st=connection.createStatement();
+                    String search = txt_findisbn.getText();
+                    String query="SELECT ISBN,BookName,AuthorFName,AuthorLName FROM bookdetails WHERE BookName LIKE CONCAT('%','"+search+"','%')";
+                    rs=st.executeQuery(query);
+                    jTable5.setModel(DbUtils.resultSetToTableModel(rs));                           
+                
+                }
+                catch(Exception e)
+                {
+                    JOptionPane.showMessageDialog(null, e);
+                }  
+    }
 
     private void chkISBNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkISBNActionPerformed
         // TODO add your handling code here:
@@ -608,8 +687,7 @@ public class Insert extends javax.swing.JFrame {
         // TODO add your handling code here:      
         show_data();
         update_table();
-        
-       
+             
     }//GEN-LAST:event_viewActionPerformed
 
 
@@ -630,7 +708,34 @@ public class Insert extends javax.swing.JFrame {
         
     }
     private void insert3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insert3ActionPerformed
+
         // TODO add your handling code here: 
+
+          // Check ISBN Key
+        if(isbn.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Please enter ISBN key","Warning",JOptionPane.WARNING_MESSAGE);
+        }
+        else
+        {
+            try 
+            {
+//Insert data to the DB
+                String sql = "insert into bookdetails(ISBN,BookName,AuthorFName,AuthorLName) values(?,?,?,?)";
+                pst = connection.prepareStatement(sql);
+                pst.setString(1,isbn.getText());
+                pst.setString(2,bName.getText());
+                pst.setString(3,AFname.getText());
+                pst.setString(4,ALname.getText());
+            
+                pst.execute();           
+                JOptionPane.showMessageDialog(null,"Saved");      
+            }
+            catch(Exception e)
+            {
+                JOptionPane.showMessageDialog(null,e);
+            }
+        }
     }//GEN-LAST:event_insert3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
