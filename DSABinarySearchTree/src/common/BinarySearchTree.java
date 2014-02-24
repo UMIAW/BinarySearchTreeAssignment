@@ -8,55 +8,17 @@ package common;
  *
  * @author IsuKay
  */
-//import java.util.ArrayList;
-
-import java.sql.*;
-import javax.swing.*;
-import java.lang.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 
 public class BinarySearchTree {
     
   public Book root;
 
-
-    public void InsertNode(int Isbn ,String Title, String Fname, String Lname) 
-    {
-       Book newNode = new Book(Isbn,Title,Fname,Lname);
-        if (root == null) 
-        {            
-            root=newNode;
-        } 
-        else 
-        {
-            Book focusNode = root;
-            Book Parent;
-
-            while (true) 
-            {
-                Parent = focusNode;
-                if (Isbn < focusNode.isbn) 
-                {
-                    focusNode = focusNode.LeftChild;
-                    if (focusNode == null) 
-                    {
-                        Parent.LeftChild = newNode;
-                        return;
-                    }
-                } else 
-                {
-                    focusNode = focusNode.RightChild;
-                    if (focusNode == null) 
-                    {
-                        Parent.RightChild = newNode;
-                        return;
-                    }
-                }
-            }
-        }
-    }
+//Insert part comes here
+  
+  
+//End of Insert Method
+    
+ //Find node comes here
 public Book FindNode(int isbn)
    {
        Book focusNode = root;
@@ -80,20 +42,17 @@ public Book FindNode(int isbn)
        }
        return focusNode;
    }
-    public void PreorderTraversTree(Book focusNode) {
 
-        if (focusNode != null) 
-        {
-            System.out.println(focusNode);
-            PreorderTraversTree(focusNode.LeftChild);
-            PreorderTraversTree(focusNode.RightChild);
-        }
-    }
+
+
+//Delete part comes here
+
+//End of Delete method
+
+//Traversal
     
-      //Insert data to data base 
-    public void GetDataFromdatabase()
-    {
-        
-    }
+
+ //End of traversal   
+      
 
 }

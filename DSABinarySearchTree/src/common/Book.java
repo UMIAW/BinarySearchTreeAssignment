@@ -9,17 +9,20 @@ package common;
  *
  * @author IsuKay
  */
-public class Book {
+
+import Forms.Insert;
+public class Book 
+{
 
      int isbn;  
      String bookName;
      String autherFirstName;
      String autherLastName;
     
-    Book RightChild;
-    Book LeftChild;
-
-
+        Book RightChild;
+        Book LeftChild;
+        
+         private javax.swing.JTable jTable5;
 
 		// Create Constructor For assign values
 		Book(int isbn , String bookName, String autherFirstName, String autherLastName)
@@ -32,9 +35,20 @@ public class Book {
 		}
 
 		public String toString()
-		{
-                   
-			return bookName+" authored by "+autherFirstName+" "+autherLastName+" " + isbn;
+		{  
+                    StringBuilder result = new StringBuilder();
+                    //String NEW_LINE = System.getProperty("line.separator");
+                  
+                    //result.append(this.getClass().getName() + "\t");
+                    
+                    /*result.append("\t" + bookName);
+                    result.append("\t" + autherFirstName);
+                    result.append("\t" + autherLastName);
+                    result.append("\t" + isbn);
+              
+    //Note that Collections and Maps also override toString
 
+                    return result.toString();*/
+                    	return bookName+"\t"+autherFirstName+"\t"+autherLastName+"\t" + isbn;
 		}
 }
