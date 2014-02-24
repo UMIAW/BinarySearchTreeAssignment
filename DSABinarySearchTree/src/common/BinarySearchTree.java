@@ -78,8 +78,6 @@ public Book FindNode(int isbn)
        return focusNode;
    }
 
-
-
 //Delete part comes here
   public boolean Delete(int key)
  {
@@ -111,8 +109,7 @@ public Book FindNode(int isbn)
     
    }
   }
-  
-  
+ 
   if(focusNode.LeftChild == null &&  focusNode.RightChild == null)
   {
    if(focusNode == null)
@@ -213,13 +210,21 @@ public Book FindNode(int isbn)
   return Replacement;
   
  }
- //End of delete
+
 
 //End of Delete method
 
 //Traversal
     
+ public void PreorderTraversTree(Book focusNode) {
 
+        if (focusNode != null) 
+        {
+            System.out.println(focusNode);
+            PreorderTraversTree(focusNode.LeftChild);
+            PreorderTraversTree(focusNode.RightChild);
+        }
+    }
  //End of traversal   
       
 
