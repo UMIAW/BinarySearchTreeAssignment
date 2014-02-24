@@ -14,7 +14,41 @@ public class BinarySearchTree {
   public Book root;
 
 //Insert part comes here
-  
+    public void InsertNode(int Isbn ,String Title, String Fname, String Lname) 
+    {
+       Book newNode = new Book(Isbn,Title,Fname,Lname);
+        if (root == null) 
+        {            
+            root=newNode;
+        } 
+        else 
+        {
+            Book focusNode = root;
+            Book Parent;
+
+            while (true) 
+            {
+                Parent = focusNode;
+                if (Isbn < focusNode.isbn) 
+                {
+                    focusNode = focusNode.LeftChild;
+                    if (focusNode == null) 
+                    {
+                        Parent.LeftChild = newNode;
+                        return;
+                    }
+                } else 
+                {
+                    focusNode = focusNode.RightChild;
+                    if (focusNode == null) 
+                    {
+                        Parent.RightChild = newNode;
+                        return;
+                    }
+                }
+            }
+        }
+    }
   
 //End of Insert Method
     

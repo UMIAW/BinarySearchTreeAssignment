@@ -693,7 +693,7 @@ public class Insert extends javax.swing.JFrame {
         
     }
     private void insert3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insert3ActionPerformed
-        // TODO add your handling code here:
+          // Check ISBN Key
         if(isbn.getText().equals(""))
         {
             JOptionPane.showMessageDialog(null,"Please enter ISBN key","Warning",JOptionPane.WARNING_MESSAGE);
@@ -702,6 +702,7 @@ public class Insert extends javax.swing.JFrame {
         {
             try 
             {
+//Insert data to the DB
                 String sql = "insert into bookdetails(ISBN,BookName,AuthorFName,AuthorLName) values(?,?,?,?)";
                 pst = connection.prepareStatement(sql);
                 pst.setString(1,isbn.getText());
