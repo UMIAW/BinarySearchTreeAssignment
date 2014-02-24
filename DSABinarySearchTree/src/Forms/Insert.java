@@ -566,7 +566,66 @@ public class Insert extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void bt_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_deleteActionPerformed
-        // TODO add your handling code here:
+         try
+        {
+            
+            String QrySearchValue=null;
+            String ColumnName=null;
+            int row=0;
+            if(chkISBN.isSelected())
+            {
+                ColumnName="ISBN";
+                QrySearchValue=txt_Delete.getText();
+            }
+            if(ch_EntireRow.isSelected())
+            {
+                 row=jTableDeleteDetails.getSelectedRow();
+                 if(row != -1)
+                 {
+                ColumnName="ISBN";
+                
+                 QrySearchValue =(jTableDeleteDetails.getModel().getValueAt(row, 1).toString());
+                
+                  }
+                 else
+                     {
+                        JOptionPane.showMessageDialog(null, "Please select a record which you want to delete");
+                        return;
+                     }
+            }
+            if(ch_BookName.isSelected())
+            {
+                ColumnName="Bookname";
+                QrySearchValue=txt_Delete.getText();
+            }
+
+           
+            int input = JOptionPane.showOptionDialog(null, "Are you sure you want delete this", "The title", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+
+            if(input == JOptionPane.OK_OPTION)
+            {
+   
+                theTree.Delete(Integer.parseInt(QrySearchValue));
+                System.out.println("Search for 45");
+                System.out.println(theTree.FindNode(45));
+           
+            
+                String query="DELETE FROM bookdetails WHERE "+ColumnName+"='"+QrySearchValue+"'";
+                pst=connection.prepareStatement(query);
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Record has been deleted successfully");
+                txt_Delete.setText("");
+                show_data();        
+            }
+          
+        }
+         catch(Exception e)
+        {
+             JOptionPane.showMessageDialog(null, e);
+        }
+        
+                                            
+    }
                 
     }//GEN-LAST:event_bt_deleteActionPerformed
 
