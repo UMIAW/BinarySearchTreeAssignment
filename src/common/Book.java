@@ -9,6 +9,10 @@ package common;
  *
  * @authored by Demons
  */
+import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class Book 
 {
 
@@ -33,7 +37,8 @@ public class Book
 		}
 
 		public String toString()
-		{              
-                    	return bookName+" \tby "+autherFirstName+"\t "+autherLastName+"\t " + isbn;
-		}
+		{     
+                    return bookName+" \tby "+autherFirstName+"\t "+autherLastName+"\t " + isbn;
+                }
+               
 }

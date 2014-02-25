@@ -94,6 +94,9 @@
   <SubComponents>
     <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="e3" green="e3" id="Button.light" palette="3" red="e3" type="palette"/>
+        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
             <BevelBorder/>
@@ -132,19 +135,19 @@
                               <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
                               <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="txt_findisbn" min="-2" pref="301" max="-2" attributes="0"/>
+                              <Component id="txt_search" min="-2" pref="301" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="search" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="ch_isbn" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
-                              <Component id="ch_name" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="239" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                              <Component id="byisbn" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="174" max="-2" attributes="0"/>
+                              <Component id="byname" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="237" max="-2" attributes="0"/>
                               <Component id="b_print" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="43" max="32767" attributes="0"/>
+                              <EmptySpace pref="56" max="32767" attributes="0"/>
                               <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                           </Group>
@@ -163,18 +166,20 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_findisbn" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_search" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="search" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane5" pref="152" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="ch_isbn" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ch_name" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="b_print" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jButton3" max="32767" attributes="0"/>
+                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                              <Component id="byisbn" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="byname" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="b_print" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -182,7 +187,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="txt_findisbn">
+            <Component class="javax.swing.JTextField" name="txt_search">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>
@@ -281,14 +286,14 @@
                 <Property name="text" type="java.lang.String" value="Search and Print"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="ch_name">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Search By Name"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="ch_isbn">
+            <Component class="javax.swing.JRadioButton" name="byisbn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Search By ISBN"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="byname">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Search By Name"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -297,9 +302,6 @@
     </Container>
     <Container class="javax.swing.JTabbedPane" name="jTabbedPane2">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
             <BevelBorder/>
@@ -329,93 +331,97 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="82" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jLabel3" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
+                              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="184" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel1" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
+                                          <Component id="jLabel3" min="-2" pref="71" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jLabel5" alignment="1" min="-2" pref="62" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jLabel4" min="-2" pref="61" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jLabel6" min="-2" pref="62" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jLabel4" min="-2" pref="61" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel6" alignment="0" min="-2" pref="62" max="-2" attributes="0"/>
-                          <Component id="jLabel5" alignment="0" min="-2" pref="62" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="isbn" alignment="0" min="-2" pref="175" max="-2" attributes="0"/>
+                              <Component id="ALname" alignment="0" pref="276" max="32767" attributes="0"/>
+                              <Component id="bName" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="AFname" alignment="1" min="-2" pref="276" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="AFname" alignment="0" min="-2" pref="276" max="-2" attributes="0"/>
-                          <Component id="isbn" alignment="0" min="-2" pref="175" max="-2" attributes="0"/>
-                          <Component id="ALname" alignment="0" min="-2" pref="276" max="-2" attributes="0"/>
-                          <Component id="bName" alignment="0" min="-2" pref="308" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="insert3" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
                           <Component id="view" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
-                          <Component id="jButton2" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
+                          <Component id="clearinsert" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel11" min="-2" pref="92" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="insert3" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                                   <Component id="isbn" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="bName" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="AFname" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="ALname" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jButton2" min="-2" pref="31" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                      <Component id="clearinsert" min="-2" pref="37" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                                       <Component id="view" min="-2" pref="31" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                              <Component id="jLabel11" min="-2" pref="92" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                              <Component id="bName" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="AFname" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="ALname" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                      <Component id="insert3" min="-2" pref="35" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="8" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -462,12 +468,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton2">
+            <Component class="javax.swing.JButton" name="clearinsert">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Clear"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clearinsertActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="insert3">
@@ -523,12 +529,12 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                              <Component id="chkISBN" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
-                              <Component id="ch_BookName" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
-                              <Component id="ch_EntireRow" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                              <Component id="rdISBN" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                              <Component id="rdBookName" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
+                              <Component id="rdEntireRow" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="bt_ref" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
@@ -551,7 +557,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                       <Component id="jScrollPane4" min="-2" pref="828" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="39" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -570,9 +576,9 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                              <Component id="chkISBN" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="ch_BookName" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="ch_EntireRow" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rdISBN" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rdBookName" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rdEntireRow" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                               <Component id="bt_ref" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -660,22 +666,6 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JCheckBox" name="chkISBN">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Delete By ISBN"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkISBNActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="ch_BookName">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Delete By Name"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ch_BookNameActionPerformed"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JButton" name="jButton5">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Clear"/>
@@ -700,9 +690,19 @@
                 <Property name="text" type="java.lang.String" value="Delete Book"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="ch_EntireRow">
+            <Component class="javax.swing.JRadioButton" name="rdISBN">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Entire Record"/>
+                <Property name="text" type="java.lang.String" value="Delete By ISBN"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="rdBookName">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Delete By Name"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="rdEntireRow">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Delete Entire"/>
               </Properties>
             </Component>
           </SubComponents>

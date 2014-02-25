@@ -80,6 +80,11 @@ public class Login extends javax.swing.JFrame {
 
         jButton2.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.darkShadow"));
         jButton2.setText("Cancel");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2);
         jButton2.setBounds(910, 470, 70, 30);
 
@@ -116,6 +121,12 @@ public class Login extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        user.setText("");
+        psw.setText("");
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

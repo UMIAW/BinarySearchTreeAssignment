@@ -55,7 +55,7 @@ public class Main extends javax.swing.JFrame {
         bookdetailsList1 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : bookdetailsQuery1.getResultList();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         P_search = new javax.swing.JPanel();
-        txt_findisbn = new javax.swing.JTextField();
+        txt_search = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         search = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -63,8 +63,8 @@ public class Main extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         jTable5 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        ch_name = new javax.swing.JCheckBox();
-        ch_isbn = new javax.swing.JCheckBox();
+        byisbn = new javax.swing.JRadioButton();
+        byname = new javax.swing.JRadioButton();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         P_insert = new javax.swing.JPanel();
         isbn = new javax.swing.JTextField();
@@ -77,7 +77,7 @@ public class Main extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         ALname = new javax.swing.JTextField();
         view = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        clearinsert = new javax.swing.JButton();
         insert3 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -88,15 +88,16 @@ public class Main extends javax.swing.JFrame {
         bt_delete = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTableDeleteDetails = new javax.swing.JTable();
-        chkISBN = new javax.swing.JCheckBox();
-        ch_BookName = new javax.swing.JCheckBox();
         jButton5 = new javax.swing.JButton();
         bt_ref = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
-        ch_EntireRow = new javax.swing.JCheckBox();
+        rdISBN = new javax.swing.JRadioButton();
+        rdBookName = new javax.swing.JRadioButton();
+        rdEntireRow = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jTabbedPane1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
         jTabbedPane1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jTabbedPane1.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
 
@@ -146,9 +147,9 @@ public class Main extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Search and Print");
 
-        ch_name.setText("Search By Name");
+        byisbn.setText("Search By ISBN");
 
-        ch_isbn.setText("Search By ISBN");
+        byname.setText("Search By Name");
 
         javax.swing.GroupLayout P_searchLayout = new javax.swing.GroupLayout(P_search);
         P_search.setLayout(P_searchLayout);
@@ -162,18 +163,18 @@ public class Main extends javax.swing.JFrame {
                         .addGap(102, 102, 102)
                         .addComponent(jLabel7)
                         .addGap(18, 18, 18)
-                        .addComponent(txt_findisbn, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(search)
                         .addGap(61, 61, 61))
                     .addGroup(P_searchLayout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(ch_isbn)
-                        .addGap(169, 169, 169)
-                        .addComponent(ch_name)
-                        .addGap(239, 239, 239)
+                        .addGap(36, 36, 36)
+                        .addComponent(byisbn)
+                        .addGap(174, 174, 174)
+                        .addComponent(byname)
+                        .addGap(237, 237, 237)
                         .addComponent(b_print)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                         .addComponent(jButton3)
                         .addGap(41, 41, 41))))
             .addGroup(P_searchLayout.createSequentialGroup()
@@ -187,23 +188,23 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(P_searchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txt_findisbn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(search))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(P_searchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ch_isbn)
-                    .addComponent(ch_name)
-                    .addComponent(b_print)
-                    .addComponent(jButton3))
+                .addGroup(P_searchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_searchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(byisbn)
+                        .addComponent(byname))
+                    .addComponent(b_print, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
         jTabbedPane1.addTab("Search and Print", P_search);
 
-        jTabbedPane2.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         P_insert.setBackground(new java.awt.Color(255, 255, 255));
@@ -225,10 +226,10 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Clear");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        clearinsert.setText("Clear");
+        clearinsert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                clearinsertActionPerformed(evt);
             }
         });
 
@@ -249,71 +250,74 @@ public class Main extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_insertLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(P_insertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
-                .addGroup(P_insertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(P_insertLayout.createSequentialGroup()
-                        .addGroup(P_insertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(8, 8, 8))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_insertLayout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addGroup(P_insertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel9)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(P_insertLayout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 184, Short.MAX_VALUE)
+                        .addGroup(P_insertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_insertLayout.createSequentialGroup()
+                                .addGroup(P_insertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(70, 70, 70))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_insertLayout.createSequentialGroup()
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(18, 18, 18)
-                .addGroup(P_insertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(AFname, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(isbn, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ALname, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bName, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
+                .addGroup(P_insertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(P_insertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(isbn, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ALname, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
+                        .addComponent(bName))
+                    .addComponent(AFname, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(82, 82, 82)
                 .addGroup(P_insertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(insert3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(view, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(55, 55, 55))
+                    .addComponent(clearinsert, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(65, 65, 65))
         );
         P_insertLayout.setVerticalGroup(
             P_insertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_insertLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(P_insertLayout.createSequentialGroup()
                 .addGroup(P_insertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(P_insertLayout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(P_insertLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
                         .addGroup(P_insertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(isbn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(insert3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(isbn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(P_insertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(P_insertLayout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addGroup(P_insertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(bName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(P_insertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(AFname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel4))
-                                .addGap(7, 7, 7)
-                                .addGroup(P_insertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(ALname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6)))
+                                .addComponent(jLabel3)
+                                .addGap(26, 26, 26)
+                                .addComponent(jLabel4))
                             .addGroup(P_insertLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(view, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(57, 57, 57))
-            .addGroup(P_insertLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(insert3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(1, 1, 1)
+                                .addComponent(clearinsert, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addComponent(view, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(P_insertLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel9)
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(P_insertLayout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(bName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(P_insertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(AFname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(P_insertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ALname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -349,20 +353,6 @@ public class Main extends javax.swing.JFrame {
         jTableBinding.bind();
         jScrollPane4.setViewportView(jTableDeleteDetails);
 
-        chkISBN.setText("Delete By ISBN");
-        chkISBN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkISBNActionPerformed(evt);
-            }
-        });
-
-        ch_BookName.setText("Delete By Name");
-        ch_BookName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ch_BookNameActionPerformed(evt);
-            }
-        });
-
         jButton5.setText("Clear");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -380,7 +370,11 @@ public class Main extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel10.setText("Delete Book");
 
-        ch_EntireRow.setText("Entire Record");
+        rdISBN.setText("Delete By ISBN");
+
+        rdBookName.setText("Delete By Name");
+
+        rdEntireRow.setText("Delete Entire");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -389,12 +383,12 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(chkISBN)
-                        .addGap(92, 92, 92)
-                        .addComponent(ch_BookName)
-                        .addGap(64, 64, 64)
-                        .addComponent(ch_EntireRow)
+                        .addGap(33, 33, 33)
+                        .addComponent(rdISBN)
+                        .addGap(72, 72, 72)
+                        .addComponent(rdBookName)
+                        .addGap(99, 99, 99)
+                        .addComponent(rdEntireRow)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(bt_ref)
                         .addGap(39, 39, 39)
@@ -413,7 +407,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(11, 11, 11)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 828, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -429,9 +423,9 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(chkISBN)
-                        .addComponent(ch_BookName)
-                        .addComponent(ch_EntireRow))
+                        .addComponent(rdISBN)
+                        .addComponent(rdBookName)
+                        .addComponent(rdEntireRow))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(bt_ref)
                         .addComponent(jButton5)))
@@ -474,29 +468,31 @@ public class Main extends javax.swing.JFrame {
 
         int Isbn=0;
 
-        if(txt_findisbn.getText().equals(""))
+        if(txt_search.getText().equals(""))
         {
             JOptionPane.showMessageDialog(null,"Please enter ISBN key that you want to search","Warning",JOptionPane.WARNING_MESSAGE);
         }
         else
         {
-            if(ch_isbn.isSelected())
+            if(byisbn.isSelected())
             {
-                Isbn = Integer.parseInt(txt_findisbn.getText().toString());
+                Isbn = Integer.parseInt(txt_search.getText().toString());
                 JOptionPane.showMessageDialog(null,"\n"+theTree.findNode(Isbn),"Searched Node",JOptionPane.PLAIN_MESSAGE);
             }
-            else if(ch_name.isSelected())
+            else
             {
                 try
                 {
-                    String BookName=txt_findisbn.getText();
-                    String searchdata=txt_findisbn.getText();
+                    String BookName=txt_search.getText();
+                   
                     Statement st=connection.createStatement();
 
                     String query="SELECT ISBN FROM bookdetails WHERE BookName='"+BookName+"'";
                     rs=st.executeQuery(query);
-
-                    Isbn=Integer.parseInt(rs.getString("ISBN"));
+                    while(rs.next())
+                    {
+                         Isbn=Integer.parseInt(rs.getString("ISBN"));
+                    }
 
                     JOptionPane.showMessageDialog(null,"\n"+theTree.findNode(Isbn),"Searched Node",JOptionPane.PLAIN_MESSAGE);
 
@@ -505,24 +501,20 @@ public class Main extends javax.swing.JFrame {
                 {
                     JOptionPane.showMessageDialog(null,e);
                 }
-            }
-            else
-            {
-                JOptionPane.showMessageDialog(null,"Please select the option that you want to search the book details","Warning",JOptionPane.WARNING_MESSAGE);
-            }
+            }         
         }
 
     }//GEN-LAST:event_searchActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        txt_findisbn.setText("");
+        txt_search.setText("");
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void b_printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_printActionPerformed
         // TODO add your handling code here:
-        if(txt_findisbn.getText().equals(""))
+        if(txt_search.getText().equals(""))
         {
             JOptionPane.showMessageDialog(null,"Please enter key word or name of the book that you want to print","Warning",JOptionPane.WARNING_MESSAGE);
         }
@@ -540,9 +532,10 @@ public class Main extends javax.swing.JFrame {
 
     }//GEN-LAST:event_viewActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void clearinsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearinsertActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        clear();
+    }//GEN-LAST:event_clearinsertActionPerformed
 
     private void insert3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insert3ActionPerformed
         // TODO add your handling code here:
@@ -572,37 +565,39 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_insert3ActionPerformed
 
     private void bt_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_deleteActionPerformed
+        
+         int Isbn=0;
+        
         try
         {
-
             String QrySearchValue=null;
             String ColumnName=null;
             int row=0;
-            if(chkISBN.isSelected())
+            if(rdISBN.isSelected())
             {
                 ColumnName="ISBN";
                 QrySearchValue=txt_Delete.getText();
             }
-            if(ch_EntireRow.isSelected())
+            else if(rdBookName.isSelected())
             {
+                ColumnName="Bookname";
+                QrySearchValue=txt_Delete.getText();
+            }
+            else
+            {
+                
                 row=jTableDeleteDetails.getSelectedRow();
                 if(row != -1)
                 {
                     ColumnName="ISBN";
-
                     QrySearchValue =(jTableDeleteDetails.getModel().getValueAt(row, 1).toString());
-
                 }
                 else
                 {
                     JOptionPane.showMessageDialog(null, "Please select a record which you want to delete");
                     return;
                 }
-            }
-            if(ch_BookName.isSelected())
-            {
-                ColumnName="Bookname";
-                QrySearchValue=txt_Delete.getText();
+               
             }
 
             int input = JOptionPane.showOptionDialog(null, "Are you sure you want delete this", "The title", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
@@ -631,14 +626,6 @@ public class Main extends javax.swing.JFrame {
 
     }//GEN-LAST:event_bt_deleteActionPerformed
 
-    private void chkISBNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkISBNActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkISBNActionPerformed
-
-    private void ch_BookNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ch_BookNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ch_BookNameActionPerformed
-
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         txt_Delete.setText("");
@@ -654,7 +641,7 @@ public class Main extends javax.swing.JFrame {
                 try
                 {                           
                     Statement st=connection.createStatement();
-                    String search = txt_findisbn.getText();
+                    String search = txt_search.getText();
                     String query="SELECT ISBN,BookName,AuthorFName,AuthorLName FROM bookdetails WHERE BookName LIKE CONCAT('%','"+search+"','%')";
                     rs=st.executeQuery(query);
                     jTable5.setModel(DbUtils.resultSetToTableModel(rs));               
@@ -784,15 +771,12 @@ public class Main extends javax.swing.JFrame {
     private javax.persistence.Query bookdetailsQuery1;
     private javax.swing.JButton bt_delete;
     private javax.swing.JButton bt_ref;
-    private javax.swing.JCheckBox ch_BookName;
-    private javax.swing.JCheckBox ch_EntireRow;
-    private javax.swing.JCheckBox ch_isbn;
-    private javax.swing.JCheckBox ch_name;
-    private javax.swing.JCheckBox chkISBN;
+    private javax.swing.JRadioButton byisbn;
+    private javax.swing.JRadioButton byname;
+    private javax.swing.JButton clearinsert;
     private javax.persistence.EntityManager entityManager;
     private javax.swing.JButton insert3;
     private javax.swing.JTextField isbn;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
@@ -814,9 +798,12 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTable jTable5;
     private javax.swing.JTable jTableDeleteDetails;
+    private javax.swing.JRadioButton rdBookName;
+    private javax.swing.JRadioButton rdEntireRow;
+    private javax.swing.JRadioButton rdISBN;
     private javax.swing.JButton search;
     private javax.swing.JTextField txt_Delete;
-    private javax.swing.JTextField txt_findisbn;
+    private javax.swing.JTextField txt_search;
     private javax.swing.JButton view;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
