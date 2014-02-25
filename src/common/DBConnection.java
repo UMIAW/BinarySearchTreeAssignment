@@ -11,7 +11,7 @@ import javax.swing.*;
 
 /**
  *
- * @author Wathsala
+ * @authored by Demons
  */
 public class DBConnection {
     
@@ -24,7 +24,7 @@ public class DBConnection {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","root");
-            JOptionPane.showMessageDialog(null, "Connection Established");
+            //JOptionPane.showMessageDialog(null, "Connection Established");
             return conn;
         }
         catch(Exception e)

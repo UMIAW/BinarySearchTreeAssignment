@@ -8,7 +8,7 @@ package Forms;
 
 /**
  *
- * @author Wathsala
+ * @authored by Demons
  */
 
 import java.sql.*;
@@ -489,10 +489,11 @@ public class Main extends javax.swing.JFrame {
             {
                 try
                 {
+                    String BookName=txt_findisbn.getText();
                     String searchdata=txt_findisbn.getText();
                     Statement st=connection.createStatement();
 
-                    String query="SELECT ISBN FROM bookdetails WHERE BookName='"+searchdata+"'";
+                    String query="SELECT ISBN FROM bookdetails WHERE BookName='"+BookName+"'";
                     rs=st.executeQuery(query);
 
                     Isbn=Integer.parseInt(rs.getString("ISBN"));
