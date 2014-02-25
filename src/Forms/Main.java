@@ -174,7 +174,7 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(byname)
                         .addGap(237, 237, 237)
                         .addComponent(b_print)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                         .addComponent(jButton3)
                         .addGap(41, 41, 41))))
             .addGroup(P_searchLayout.createSequentialGroup()
@@ -274,7 +274,7 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(ALname, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
                         .addComponent(bName))
                     .addComponent(AFname, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(82, 82, 82)
+                .addGap(91, 91, 91)
                 .addGroup(P_insertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(insert3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(view, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -385,11 +385,11 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addComponent(rdISBN)
-                        .addGap(72, 72, 72)
+                        .addGap(36, 36, 36)
                         .addComponent(rdBookName)
-                        .addGap(99, 99, 99)
+                        .addGap(135, 135, 135)
                         .addComponent(rdEntireRow)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
                         .addComponent(bt_ref)
                         .addGap(39, 39, 39)
                         .addComponent(jButton5))
@@ -403,11 +403,11 @@ public class Main extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(bt_delete)
                         .addGap(202, 202, 202)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(11, 11, 11)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 828, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addComponent(jScrollPane4)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -577,11 +577,50 @@ public class Main extends javax.swing.JFrame {
             {
                 ColumnName="ISBN";
                 QrySearchValue=txt_Delete.getText();
+                
+                theTree.Delete(Integer.parseInt(QrySearchValue));
+                System.out.println("\nSearch for deleted ISBN "+txt_Delete.getText()+" is exist or not");
+                int deleisbn = Integer.parseInt(txt_Delete.getText());
+                System.out.println(theTree.findNode(deleisbn));
+
+                String query="DELETE FROM bookdetails WHERE "+ColumnName+"='"+QrySearchValue+"'";
+                pst=connection.prepareStatement(query);
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Record has been deleted successfully");
+                txt_Delete.setText("");
             }
             else if(rdBookName.isSelected())
             {
                 ColumnName="Bookname";
                 QrySearchValue=txt_Delete.getText();
+                
+                try
+                {
+                    String BookName=txt_search.getText();
+                   
+                    Statement st=connection.createStatement();
+
+                    String query="SELECT ISBN FROM bookdetails WHERE "+ColumnName+"='"+QrySearchValue+"'";
+                    rs=st.executeQuery(query);
+                    while(rs.next())
+                    {
+                         Isbn=Integer.parseInt(rs.getString("ISBN"));
+                         query="DELETE FROM bookdetails WHERE "+ColumnName+"='"+Isbn+"'";
+                         pst=connection.prepareStatement(query);
+                         pst.executeUpdate();
+                         JOptionPane.showMessageDialog(null, "Record has been deleted successfully");
+                         txt_Delete.setText("");
+                    }
+
+                    JOptionPane.showMessageDialog(null,"\n"+theTree.findNode(Isbn),"Searched Node",JOptionPane.PLAIN_MESSAGE);
+
+                }
+                catch(Exception e)
+                {
+                    JOptionPane.showMessageDialog(null,e);
+                }
+
+               
             }
             else
             {
@@ -600,23 +639,13 @@ public class Main extends javax.swing.JFrame {
                
             }
 
-            int input = JOptionPane.showOptionDialog(null, "Are you sure you want delete this", "The title", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+            //int input = JOptionPane.showOptionDialog(null, "Are you sure you want delete this", "The title", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
 
-            if(input == JOptionPane.OK_OPTION)
-            {
+           
 
-                theTree.Delete(Integer.parseInt(QrySearchValue));
-                System.out.println("\nSearch for deleted ISBN "+txt_Delete.getText()+" is exist or not");
-                int deleisbn = Integer.parseInt(txt_Delete.getText());
-                System.out.println(theTree.findNode(deleisbn));
-
-                String query="DELETE FROM bookdetails WHERE "+ColumnName+"='"+QrySearchValue+"'";
-                pst=connection.prepareStatement(query);
-                pst.executeUpdate();
-                JOptionPane.showMessageDialog(null, "Record has been deleted successfully");
-                txt_Delete.setText("");
                 
-            }
+                
+            
 
         }
         catch(Exception e)
