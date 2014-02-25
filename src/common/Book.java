@@ -34,6 +34,6 @@ public class Book
 
 		public String toString()
 		{              
-                    	return bookName+"\t"+autherFirstName+"\t"+autherLastName+"\t" + isbn;
+                    	return bookName+" \tby "+autherFirstName+"\t "+autherLastName+"\t " + isbn;
 		}
 }
