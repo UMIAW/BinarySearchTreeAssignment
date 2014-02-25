@@ -96,6 +96,7 @@ public class Main extends javax.swing.JFrame {
         rdEntireRow = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(153, 153, 153));
 
         jTabbedPane1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
         jTabbedPane1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
