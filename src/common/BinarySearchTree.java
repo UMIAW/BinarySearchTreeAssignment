@@ -46,7 +46,8 @@ public class BinarySearchTree {
                         Parent.LeftChild = newNode;
                         return;
                     }
-                } else 
+                }
+                else 
                 {
                     focusNode = focusNode.RightChild;
                     if (focusNode == null) 
@@ -96,18 +97,19 @@ public boolean Delete(int key)
         Book Parent = root;
   
         boolean isLeftChild = true;
-  
+        
         while(focusNode.isbn != key)
         {
             Parent = focusNode;
             
-            //Check that the focus node have left child or Right child
+            //Check that the focus node have left child 
             if(key < focusNode.isbn)
             {
                 isLeftChild = true;  
                 
                 focusNode = focusNode.LeftChild;
             }
+            //Check that the focus node have right child 
             else
             {
                 isLeftChild = false;
