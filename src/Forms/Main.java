@@ -20,6 +20,9 @@ import javax.swing.*;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import net.proteanit.sql.DbUtils;
+
+
+
 public class Main extends javax.swing.JFrame {
 
     /**
@@ -53,6 +56,8 @@ public class Main extends javax.swing.JFrame {
         bookdetailsList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : bookdetailsQuery.getResultList();
         bookdetailsQuery1 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT b FROM Bookdetails b");
         bookdetailsList1 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : bookdetailsQuery1.getResultList();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         P_search = new javax.swing.JPanel();
         txt_search = new javax.swing.JTextField();
@@ -147,8 +152,10 @@ public class Main extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Search and Print");
 
+        buttonGroup1.add(byisbn);
         byisbn.setText("Search By ISBN");
 
+        buttonGroup1.add(byname);
         byname.setText("Search By Name");
 
         javax.swing.GroupLayout P_searchLayout = new javax.swing.GroupLayout(P_search);
@@ -168,9 +175,9 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(search)
                         .addGap(61, 61, 61))
                     .addGroup(P_searchLayout.createSequentialGroup()
-                        .addGap(36, 36, 36)
+                        .addGap(9, 9, 9)
                         .addComponent(byisbn)
-                        .addGap(82, 82, 82)
+                        .addGap(84, 84, 84)
                         .addComponent(byname)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(b_print)
@@ -371,10 +378,14 @@ public class Main extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel10.setText("Delete Book");
 
+        buttonGroup2.add(rdISBN);
+        rdISBN.setSelected(true);
         rdISBN.setText("Delete By ISBN");
 
+        buttonGroup2.add(rdBookName);
         rdBookName.setText("Delete By Name");
 
+        buttonGroup2.add(rdEntireRow);
         rdEntireRow.setText("Delete Entire");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -386,9 +397,9 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addComponent(rdISBN)
-                        .addGap(36, 36, 36)
+                        .addGap(80, 80, 80)
                         .addComponent(rdBookName)
-                        .addGap(135, 135, 135)
+                        .addGap(91, 91, 91)
                         .addComponent(rdEntireRow)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
                         .addComponent(bt_ref)
@@ -478,8 +489,7 @@ public class Main extends javax.swing.JFrame {
             if(byisbn.isSelected())
             {
                 Isbn = Integer.parseInt(txt_search.getText().toString());
-                JOptionPane.showMessageDialog(null,"\n"+theTree.findNode(Isbn),"Searched Node",JOptionPane.PLAIN_MESSAGE);
-               
+                JOptionPane.showMessageDialog(null,"\n"+theTree.findNode(Isbn),"Searched Node",JOptionPane.PLAIN_MESSAGE);               
             }
             else
             {
@@ -495,9 +505,7 @@ public class Main extends javax.swing.JFrame {
                     {
                          Isbn=Integer.parseInt(rs.getString("ISBN"));
                     }
-
                     JOptionPane.showMessageDialog(null,"\n"+theTree.findNode(Isbn),"Searched Node",JOptionPane.PLAIN_MESSAGE);
-
                 }
                 catch(Exception e)
                 {
@@ -529,9 +537,10 @@ public class Main extends javax.swing.JFrame {
 
     private void viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewActionPerformed
         // TODO add your handling code here:
+     
         show_data();
         update_table();
-
+        refresh_table();
     }//GEN-LAST:event_viewActionPerformed
 
     private void clearinsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearinsertActionPerformed
@@ -568,8 +577,8 @@ public class Main extends javax.swing.JFrame {
 
     private void bt_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_deleteActionPerformed
         
-         int Isbn=0;
-        
+        int Isbn=0;
+     
         try
         {
             String QrySearchValue=null;
@@ -577,6 +586,9 @@ public class Main extends javax.swing.JFrame {
             int row=0;
             if(rdISBN.isSelected())
             {
+                if(rdISBN.isSelected())
+                    rdBookName.setSelected(false);
+                
                 ColumnName="ISBN";
                 QrySearchValue=txt_Delete.getText();
                 
@@ -593,6 +605,9 @@ public class Main extends javax.swing.JFrame {
             }
             else if(rdBookName.isSelected())
             {
+                if(rdBookName.isSelected())
+                    rdISBN.setSelected(false);
+                
                 ColumnName="Bookname";
                 QrySearchValue=txt_Delete.getText();
                 
@@ -613,20 +628,15 @@ public class Main extends javax.swing.JFrame {
                          JOptionPane.showMessageDialog(null, "Record has been deleted successfully");
                          txt_Delete.setText("");
                     }
-
                     JOptionPane.showMessageDialog(null,"\n"+theTree.findNode(Isbn),"Searched Node",JOptionPane.PLAIN_MESSAGE);
-
                 }
                 catch(Exception e)
                 {
                     JOptionPane.showMessageDialog(null,e);
-                }
-
-               
+                }               
             }
             else
-            {
-                
+            {                
                 row=jTableDeleteDetails.getSelectedRow();
                 if(row != -1)
                 {
@@ -637,18 +647,8 @@ public class Main extends javax.swing.JFrame {
                 {
                     JOptionPane.showMessageDialog(null, "Please select a record which you want to delete");
                     return;
-                }
-               
+                }               
             }
-
-            //int input = JOptionPane.showOptionDialog(null, "Are you sure you want delete this", "The title", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
-
-           
-
-                
-                
-            
-
         }
         catch(Exception e)
         {
@@ -737,8 +737,10 @@ public class Main extends javax.swing.JFrame {
             }  
             System.out.println("\n");
             System.out.println("Data collection according to Binary Search Tree");
-             System.out.println("----------------------------------------------------\n");
+            System.out.println("----------------------------------------------------\n");
            theTree.PreorderTraversTree(theTree.root); 
+           
+           
         }
         catch(Exception e)
         {
@@ -803,6 +805,8 @@ public class Main extends javax.swing.JFrame {
     private javax.persistence.Query bookdetailsQuery1;
     private javax.swing.JButton bt_delete;
     private javax.swing.JButton bt_ref;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JRadioButton byisbn;
     private javax.swing.JRadioButton byname;
     private javax.swing.JButton clearinsert;

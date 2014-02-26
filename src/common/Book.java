@@ -21,24 +21,22 @@ public class Book
      String autherFirstName;
      String autherLastName;
     
-        Book RightChild;
-        Book LeftChild;
-        
-      
+     Book RightChild;
+     Book LeftChild;
+           
 
-		// Create Constructor For assign values
-		Book(int isbn , String bookName, String autherFirstName, String autherLastName)
-		{
-			this.isbn=isbn;                   
-			this.bookName = bookName;
-                        this.autherFirstName=autherFirstName;
-			this.autherLastName = autherLastName;
+    // Create Constructor For assign values
+    Book(int isbn , String bookName, String autherFirstName, String autherLastName)
+    {
+	this.isbn=isbn;                   
+        this.bookName = bookName;
+        this.autherFirstName=autherFirstName;
+        this.autherLastName = autherLastName;
+    }
 
-		}
-
-		public String toString()
-		{     
-                    return bookName+" \tby "+autherFirstName+"\t "+autherLastName+"\t " + isbn;
-                }
+    public String toString()
+    {     
+        return bookName+" \tby "+autherFirstName+"\t "+autherLastName+"\t " + isbn;
+    }
                
 }
