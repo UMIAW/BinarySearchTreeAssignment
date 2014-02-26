@@ -18,30 +18,28 @@ USE `bookstore`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `bookdetails`
+-- Table structure for table `userlogin`
 --
 
-DROP TABLE IF EXISTS `bookdetails`;
+DROP TABLE IF EXISTS `userlogin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `bookdetails` (
-  `IndexId` int(11) NOT NULL AUTO_INCREMENT,
-  `ISBN` int(11) NOT NULL,
-  `BookName` varchar(45) NOT NULL,
-  `AuthorFName` varchar(45) NOT NULL,
-  `AuthorLName` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`IndexId`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+CREATE TABLE `userlogin` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `User` varchar(45) NOT NULL,
+  `psw` varchar(45) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `bookdetails`
+-- Dumping data for table `userlogin`
 --
 
-LOCK TABLES `bookdetails` WRITE;
-/*!40000 ALTER TABLE `bookdetails` DISABLE KEYS */;
-INSERT INTO `bookdetails` VALUES (13,66,'Core Java Volume I--Fundamentals','Cay','Horstmann'),(14,38,'Beginning Programming with Java For Dummies','Burd',''),(16,50,'Introduction to Java Programming','Daniel','Liang'),(18,40,'Effective Java (2nd Edition)','Daniel ','Liang');
-/*!40000 ALTER TABLE `bookdetails` ENABLE KEYS */;
+LOCK TABLES `userlogin` WRITE;
+/*!40000 ALTER TABLE `userlogin` DISABLE KEYS */;
+INSERT INTO `userlogin` VALUES (1,'wathsala','123'),(2,'umi','123'),(3,'moshan','123'),(4,'isuru','123'),(5,'arun','123'),(6,'admin','admin');
+/*!40000 ALTER TABLE `userlogin` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-02-25 21:56:36
+-- Dump completed on 2014-02-26 10:30:58

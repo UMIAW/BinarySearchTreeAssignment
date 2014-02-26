@@ -24,8 +24,8 @@ public class BinarySearchTree {
     public void InsertNode(int Isbn ,String Title, String Fname, String Lname) 
     {
        Book newNode = new Book(Isbn,Title,Fname,Lname);
-       //Check whether the binary search tree is empty or not
        
+       //Check whether the binary search tree is empty or not
         if (root == null) 
         {            
             root=newNode;
@@ -34,7 +34,7 @@ public class BinarySearchTree {
         {
             Book focusNode = root;
             Book Parent;
-            //Find the place to inpurt new node
+            //Find the place to input a new node
             while (true) 
             {
                 Parent = focusNode;
@@ -68,14 +68,17 @@ public Book findNode(int isbn)
        
        while(focusNode.isbn != isbn)
        {
+           //If searching node is less than the focusNode,
            if(isbn < focusNode.isbn)
            {
+                //Make the leftchild of fosucNode as the fousNode
                focusNode = focusNode.LeftChild;
            }
            else
            {
                focusNode = focusNode.RightChild;
            }
+           //Check whether the searching node is exist or not
            if(focusNode==null)
            {
                return null;
