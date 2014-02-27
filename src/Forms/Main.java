@@ -587,13 +587,12 @@ public class Main extends javax.swing.JFrame {
             int row=0;
             if(rdISBN.isSelected())
             {
-                if(rdISBN.isSelected())
-                    rdBookName.setSelected(false);
-                
+                           
                 ColumnName="ISBN";
                 QrySearchValue=txt_Delete.getText();
                 
                 theTree.Delete(Integer.parseInt(QrySearchValue));
+                
                 System.out.println("\nSearch for deleted ISBN "+txt_Delete.getText()+" is exist or not");
                 int deleisbn = Integer.parseInt(txt_Delete.getText());
                 System.out.println(theTree.findNode(deleisbn));
@@ -606,24 +605,22 @@ public class Main extends javax.swing.JFrame {
             }
             else if(rdBookName.isSelected())
             {
-                if(rdBookName.isSelected())
-                    rdISBN.setSelected(false);
                 
-                ColumnName="Bookname";
+                
+             
                 QrySearchValue=txt_Delete.getText();
-                
+              
                 try
-                {
-                    String BookName=txt_search.getText();
-                   
+                {       
                     Statement st=connection.createStatement();
-
-                    String query="SELECT ISBN FROM bookdetails WHERE "+ColumnName+"='"+QrySearchValue+"'";
+                    String query="SELECT ISBN FROM bookdetails WHERE Bookname='"+QrySearchValue+"'";
                     rs=st.executeQuery(query);
                     while(rs.next())
                     {
                          Isbn=Integer.parseInt(rs.getString("ISBN"));
-                         query="DELETE FROM bookdetails WHERE "+ColumnName+"='"+Isbn+"'";
+                         
+                         theTree.Delete(Isbn);
+                         query="DELETE FROM bookdetails WHERE Isbn='"+Isbn+"'";
                          pst=connection.prepareStatement(query);
                          pst.executeUpdate();
                          JOptionPane.showMessageDialog(null, "Record has been deleted successfully");
