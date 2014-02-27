@@ -499,7 +499,7 @@ public class Main extends javax.swing.JFrame {
                     String BookName=txt_search.getText();
                    
                     Statement st=connection.createStatement();
-
+                    //search the ISBN key form database according to the book name
                     String query="SELECT ISBN FROM bookdetails WHERE BookName='"+BookName+"'";
                     rs=st.executeQuery(query);
                     while(rs.next())
